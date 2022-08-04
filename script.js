@@ -31,21 +31,18 @@ function errorAlert() {
 function calc() {
     const newResult = resultCalc.innerHTML
     if(newResult.startsWith('x') || newResult.startsWith('/')) {
-        console.log("erro")
-        errorAlert();
+        errorAlert()
     }else if(newResult.includes('--') || newResult.includes('-+') || newResult.includes('-.') || newResult.includes('-x') || newResult.includes('-/') 
             || newResult.includes('+-') || newResult.includes('++') || newResult.includes('+.') || newResult.includes('+x') || newResult.includes('+/')
             || newResult.includes('x-') || newResult.includes('x+') || newResult.includes('x.') || newResult.includes('xx') || newResult.includes('x/')
             || newResult.includes('/-') || newResult.includes('/+') || newResult.includes('/.') || newResult.includes('/x') || newResult.includes('//')
             || newResult.includes('.-') || newResult.includes('.+') || newResult.includes('..') || newResult.includes('.x') || newResult.includes('./')) {
-        console.log("error 2")
         errorAlert()
     }else {
         console.log("passou")
         if(newResult.includes('x')) {
             let convertedRes = newResult.replace(/x/g, "*");
             resultCalc.innerHTML = eval(convertedRes);
-            return;
         }
         resultCalc.innerHTML = eval(newResult);
     }
