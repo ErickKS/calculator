@@ -1,4 +1,4 @@
-# [Calculator](https://erickks.github.io/calculadora/)
+# [Calculator](https://erickks.github.io/calculator/)
 Simple and elegant calculator project
 <br>
 <br>
