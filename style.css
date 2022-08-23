@@ -1,23 +1,32 @@
 :root {
     font-size: 62.5%; /* 1rem = 10px */
 
-    --color-primary: hsl(235, 35%, 19%);
-    --color-secondary: hsl(358, 78%, 69%);
-    --color-font: hsla(0, 0%, 100%, 0.902);
+    --font: hsl(0, 0%, 100%);
+
+    --background: hsl(236, 21%, 13%);
+
+    --btn: hsl(224, 28%, 16%);
+}
+
+.dark__theme__variables {
+    --background: hsl(0, 0%, 100%);
+
+    --font: hsl(0, 0%, 27%);
+
+    --btn: hsl(204, 63%, 97%);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    user-select: none;
+    font-family: 'Montserrat', sans-serif;
 }
 
 html, body {
     height: 100%;
-    background-color: var(--color-primary);
+    background-color: #1E2435;
     font-size: 1.6rem;
-    font-family: 'Open sans', sans-serif;
 }
 
 section {
@@ -31,68 +40,66 @@ section {
     flex-direction: column;
     width: 100%;
     height: 100%;
-}
-
-p,
-h1 {
-    color: var(--color-font);
-}
-
-i{
-    color: #C1E6FF;
+    position: relative;
 }
 
 h1 {
+    margin-bottom: 3rem;
     font-size: 3.2rem;
     text-transform: uppercase;
-    margin-bottom: 3rem;
+    color: #fff;
 }
 
-p {
-    font-size: 2.4rem;
-    display: flex;
+/* ==== CALCULATOR ==== */
+
+.calculator {
+    width: 35rem;
+    background-color: var(--background);
+    padding: .8rem;
+    border-radius: 1.2rem;
+}
+
+.display {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
     align-items: center;
-    justify-content: right;
-    height: 6rem;
-    margin: .5rem;
-    background-color: #38393D;
+    text-align: right;
+    height: 10rem;
     padding-inline: .2rem;
+    margin: 1rem .8rem;
+    border-bottom: .1rem solid #1D2232;
+    overflow-x: hidden;
 }
 
-/* ==== CALCULADORA ==== */
-
-.calculadora {
-    position: relative;
-    background-color: #1F1F1F;
-    border-radius: .8rem;
-    padding: 1.6rem;
+.display p {
+    font-size: 4.8rem;
+    color: var(--font);
 }
 
-table {
-    border-spacing: .5rem;
-}
-
-.calculadora > i {
-    position: absolute;
-    top: 4rem;
-    left: 3.5rem;
+.display #alert {
+    text-align: left;
     color: #d40000;
-    font-size: 2.4rem;
+    font-size: 3.2rem;
     opacity: 0;
     transition: opacity .5s;
 }
 
+table {
+    border-spacing: 1rem;
+    margin-inline: auto;
+}
+
 button {
-    width: 6rem;
-    height: 6rem;
+    width: 7rem;
+    height: 7rem;
     text-align: center;
-    background-color: #28282A;
+    border-radius: .8rem;
     border: none;
-    color: #C1E6FF;
-    font-size: 2.4rem;
+    font-weight: 600;
+    font-size: 3.2rem;
     cursor: pointer;
     opacity: 1;
-    transition: .1s;
+    transition: all .1s;
 }
 button:hover {
     opacity: .5;
@@ -101,16 +108,167 @@ button:active {
     border-radius: 2.4rem;
 }
 
-.operators {
-    background-color: #004A77;
+.numbers {
+    background-color: var(--btn);
+    color: var(--font);
 }
 
-.equal {
-    background-color: #0742A0;
-    height: 12.6rem;
+.operator {
+    background-color: #52C9DC;
+    color: #FFF;
 }
 
-.ac {
-    background-color: #0F5324;
+.equals {   
+    height: 14.8rem;
+}
+
+/* ==== THEME TOGGLER ==== */
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem .8rem;
+}
+
+.icons i {
+    font-size: 1.2rem;
+}
+
+.icons i.red {
+    color: #FD544D;
+}
+.icons i.yellow {
+    color: #FFC02F;
+    margin-inline: .5rem;
+}
+.icons i.green {
+    color: #28CA40;
+}
+
+.theme__toggler {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.theme__toggler > input {
+    display: none;
+}
+
+.theme__toggler > label {
+    position: relative;
+    display: block;
+    height: 2.1rem;
+    width: 4.5rem;
+    background-color: var(--background);
+    border: 0.1rem solid #52C9DC;
+    border-radius: 10rem;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.theme__toggler > label:after {
+    content: '';
+    position: absolute;
+    left: -0.1rem;
+    display: block;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 10rem;
+    background: #52C9DC;
+    box-shadow: 0 .3rem .3rem rgb(0 0 0 / 5%);
+    transition: all 0.3s ease;
+}
+.theme__toggler > label:active:after {
+    transform: scale(1.15, 0.85);
+}
+.theme__toggler > input:checked ~ label {
+    background-color: var(--btn);
+}
+.theme__toggler > input:checked ~ label:after {
+    left: 2.5rem;
+}
+
+.theme__toggler span i {
+    font-size: 1.6rem;
+    margin-right: .5rem;
+    transition: opacity .3s;
+}
+
+.theme__toggler span i.fa-moon {
+    opacity: 1;
+    color: #FFF;
+}
+.theme__toggler span i.fa-sun {
+    opacity: 0;
+    color: #454545;
+}
+
+.theme__toggler.active span i.fa-moon {
+    opacity: 0;
+}
+.theme__toggler.active span i.fa-sun {
+    opacity: 1;
+}
+
+/* ==== POP-UP ==== */
+
+#pop-upLayer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    visibility: hidden;
+    transition: visibility .1s;
+}
+
+#pop-upLayer.active {
+    visibility: visible;
+}
+
+.pop-up {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: min(28rem, 100%);
+    padding: 1.5rem 1rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border: .1rem solid rgba(0, 0, 0, 0.5);
+    border-radius: .5rem;
+}
+
+.pop-up i {
+    color: #FD544D;
+    font-size: 4.8rem;
+}
+
+.pop-up h3 {
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    margin-block: 2rem 1rem;
+    color: #fff;
+}
+
+.pop-up p {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-block: .4rem;
+    color: #fff;
+}
+
+.pop-up button {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    background-color: #52C9DC;
+    color: #FFF;
+    width: auto;
+    height: 4rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: .5rem;
 }

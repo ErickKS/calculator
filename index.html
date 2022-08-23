@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
+    <title>Calculator</title>
 
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,600&display=swap" rel="stylesheet">
 
     <!-- ICONS -->
     <script src="https://kit.fontawesome.com/6f3103b13c.js" crossorigin="anonymous"></script>
@@ -17,49 +17,75 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./style.css">
 
-
 </head>
 <body>
-    <section>
-        <div class="container">
-            <h1>Calculadora</h1>
+    <div class="container">
+        <h1>Calculator</h1>
 
-            <div class="calculadora">
-                <p id="result"></p>
+        <div class="calculator">
+            <div class="top">
+                <div class="icons">
+                    <i class="fa-solid fa-circle red"></i>
+                    <i class="fa-solid fa-circle yellow"></i>
+                    <i class="fa-solid fa-circle green"></i>
+                </div>
+
+                <div class="theme__toggler">
+                    <span><i class="fa-solid fa-sun"></i></span>
+                    <span><i class="fa-solid fa-moon"></i></span>
+                    <input type="checkbox" id="check-on-off" name="lembrar">
+                    <label for="check-on-off"></label>
+                </div>
+            </div>
+
+            <div class="display">
                 <i id="alert" class="fa-solid fa-circle-exclamation"></i>
+                <p id="result"></p>
+            </div>
+
+            <div class="operators">
                 <table>
                     <tr>
-                        <td colspan="2"><button class="ac" onclick="ac()">AC</button></td>
-                        <td><button class="operators" onclick="insert('/')">/</button></td>
-                        <td><button class="operators" onclick="insert('x')">x</button></td>
+                        <td><button class="operator" onclick="c()">C</button></td>
+                        <td><button class="operator" onclick="erase()"><i class="fa-solid fa-delete-left"></i></button></td>
+                        <td><button class="operator" onclick="insert('/')"><i class="fa-solid fa-divide"></i></button></td>
+                        <td><button class="operator" onclick="insert('x')"><i class="fa-solid fa-xmark"></i></button></td>
                     </tr>
                     <tr>
-                        <td><button onclick="insert('7')">7</button></td>
-                        <td><button onclick="insert('8')">8</button></td>
-                        <td><button onclick="insert('9')">9</button></td>
-                        <td><button class="operators" onclick="insert('-')">-</button></td>
+                        <td><button class="numbers" onclick="insert('7')">7</button></td>
+                        <td><button class="numbers" onclick="insert('8')">8</button></td>
+                        <td><button class="numbers" onclick="insert('9')">9</button></td>
+                        <td><button class="operator" onclick="insert('-')"><i class="fa-solid fa-minus"></i></button></td>
                     </tr>
                     <tr>
-                        <td><button onclick="insert('4')">4</button></td>
-                        <td><button onclick="insert('5')">5</button></td>
-                        <td><button onclick="insert('6')">6</button></td>
-                        <td><button class="operators" onclick="insert('+')">+</button></td>
+                        <td><button class="numbers" onclick="insert('4')">4</button></td>
+                        <td><button class="numbers" onclick="insert('5')">5</button></td>
+                        <td><button class="numbers" onclick="insert('6')">6</button></td>
+                        <td><button class="operator" onclick="insert('+')"><i class="fa-solid fa-plus"></i></button></td>
                     </tr>
                     <tr>
-                        <td><button onclick="insert('1')">1</button></td>
-                        <td><button onclick="insert('2')">2</button></td>
-                        <td><button onclick="insert('3')">3</button></td>
-                        <td rowspan="2"><button class="equal" onclick="calc()">=</button></td>
+                        <td><button class="numbers" onclick="insert('1')">1</button></td>
+                        <td><button class="numbers" onclick="insert('2')">2</button></td>
+                        <td><button class="numbers" onclick="insert('3')">3</button></td>
+                        <td rowspan="2"><button class="operator equals" onclick="calc()"><i class="fa-solid fa-equals"></i></button></td>
                     </tr>
                     <tr>
-                        <td><button onclick="insert('0')">0</button></td>
-                        <td><button onclick="insert('.')">.</button></td>
-                        <td><button onclick="erase()"><i class="fa-solid fa-delete-left"></i></button></td>
+                        <td><button class="numbers" onclick="insert('0')">0</button></td>
+                        <td><button class="numbers" onclick="insert('.')">.</button></td>
                     </tr>
                 </table>
             </div>
         </div>
-    </section>
+        <div id="pop-upLayer">
+            <div class="pop-up">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h3>Opps!</h3>
+                <p>The maximum number of characters has been reached</p>
+                <p>I suggest clearing the data so that no problems occur</p>
+                <button onclick="closePopUp()">Close</button>
+            </div>
+        </div>
+    </div>
 
     <!-- SCRIPT -->
     <script src="./script.js"></script>
