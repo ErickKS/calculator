@@ -272,3 +272,14 @@ button:active {
     margin-top: 1rem;
     border-radius: .5rem;
 }
+
+/* ==== FOOTER ==== */
+
+.footer {
+    margin-top: 1rem;
+    color: #fff;
+}
+
+.footer a {
+    color: #52C9DC;
+}
