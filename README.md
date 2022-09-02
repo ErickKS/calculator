@@ -41,4 +41,4 @@
 <br>
 
 🚧 Next features 🚧
-- [] Support more than 9 characters on the display
+- [ ] Support more than 9 characters on the display
